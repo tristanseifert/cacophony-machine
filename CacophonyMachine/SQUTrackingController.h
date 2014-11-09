@@ -14,27 +14,15 @@
 #import <AudioUnit/AudioUnit.h>
 #include <AudioToolbox/AudioToolbox.h>
 
-// set to 1 to log note events to console
-#define LOG_NOTE_EVENTS	1
-
-// delay between detecting note on and the timer firing
-#define	NOTE_DELAY		0.5f
-
+@class SQUMIDIOutputController;
 @class SQUTrackingImageController;
 @interface SQUTrackingController : NSObject <LeapListener> {
 	LeapController *_controller;
 	
 	AudioComponentInstance _toneUnit;
 	
-	// midi stuff
-	AUGraph _outGraph;
-	AUNode _synthNode, _limiterNode, _outNode;
-	AudioUnit _outSynth;
-	
-	NSUInteger noteStates[2];
-	UInt32 lastNote[2];
-	
 	IBOutlet SQUTrackingImageController *_imageController;
+	IBOutlet SQUMIDIOutputController *_midiController;
 	
 @public
 	float theta[2];
@@ -42,17 +30,17 @@
 	float frequency[2];
 }
 
-@property (nonatomic) CGFloat leftSensitivity;
-@property (nonatomic) CGFloat rightSensitivity;
-@property (nonatomic) NSUInteger leftOffset;
-@property (nonatomic) NSUInteger rightOffset;
+@property (readonly, nonatomic) CGFloat leftSensitivity;
+@property (readonly, nonatomic) CGFloat rightSensitivity;
+@property (readonly, nonatomic) NSUInteger leftOffset;
+@property (readonly, nonatomic) NSUInteger rightOffset;
 
-@property (nonatomic) NSUInteger leftPatch;
-@property (nonatomic) NSUInteger rightPatch;
+@property (readonly, nonatomic) NSUInteger leftPatch;
+@property (readonly, nonatomic) NSUInteger rightPatch;
 
-@property (nonatomic) NSUInteger connectionStatus;
+@property (readonly, nonatomic) NSUInteger connectionStatus;
 
-@property (nonatomic) NSMutableDictionary *leftHandData;
-@property (nonatomic) NSMutableDictionary *rightHandData;
+@property (readonly, nonatomic) NSMutableDictionary *leftHandData;
+@property (readonly, nonatomic) NSMutableDictionary *rightHandData;
 
 @end

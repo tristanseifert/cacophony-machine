@@ -402,15 +402,14 @@
         </menu>
         <window title="CacophonyMachine" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="mainWindow" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="0.0" y="0.0" width="480" height="434"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1600" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="434"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e0q-Xc-h0G">
-                        <rect key="frame" x="18" y="323" width="123" height="17"/>
+                        <rect key="frame" x="18" y="397" width="123" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Connection Status:" id="O3u-Pf-Fov">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -418,7 +417,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PgS-gG-bB7">
-                        <rect key="frame" x="147" y="323" width="315" height="17"/>
+                        <rect key="frame" x="147" y="397" width="315" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="BPg-fY-Bld">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -429,7 +428,7 @@
                         </connections>
                     </textField>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Patches" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="V7p-7i-kgP">
-                        <rect key="frame" x="17" y="232" width="446" height="83"/>
+                        <rect key="frame" x="17" y="306" width="446" height="83"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="444" height="67"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -486,7 +485,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Left" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Hgq-dY-GtW">
-                        <rect key="frame" x="17" y="16" width="222" height="212"/>
+                        <rect key="frame" x="17" y="90" width="222" height="212"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="220" height="196"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -658,7 +657,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Right" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="sF4-Fw-cmM">
-                        <rect key="frame" x="241" y="16" width="222" height="212"/>
+                        <rect key="frame" x="241" y="90" width="222" height="212"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="220" height="196"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -829,20 +828,54 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="CPU" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="OET-Tp-QwV">
+                        <rect key="frame" x="17" y="16" width="446" height="70"/>
+                        <view key="contentView">
+                            <rect key="frame" x="1" y="1" width="444" height="54"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dym-yO-xJw">
+                                    <rect key="frame" x="10" y="30" width="80" height="17"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CPU Usage:" id="xVZ-ey-2fS">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-Nb-htZ">
+                                    <rect key="frame" x="96" y="30" width="330" height="16"/>
+                                    <levelIndicatorCell key="cell" alignment="left" maxValue="100" warningValue="65" criticalValue="85" levelIndicatorStyle="continuousCapacity" id="zif-wx-bgH"/>
+                                    <connections>
+                                        <binding destination="Bae-x0-FNf" name="value" keyPath="averageCPUUsage" id="JI4-Vi-PFb"/>
+                                    </connections>
+                                </levelIndicator>
+                                <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-du-n04">
+                                    <rect key="frame" x="96" y="14" width="330" height="16"/>
+                                    <levelIndicatorCell key="cell" alignment="left" maxValue="100" warningValue="65" criticalValue="85" levelIndicatorStyle="continuousCapacity" id="N0s-02-ADk"/>
+                                    <connections>
+                                        <binding destination="Bae-x0-FNf" name="value" keyPath="peakCPUUsage" id="S85-0b-dVj"/>
+                                    </connections>
+                                </levelIndicator>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="398" y="356"/>
+            <point key="canvasLocation" x="398" y="393"/>
         </window>
         <customObject id="syY-mI-A4n" customClass="SQUTrackingController">
             <connections>
                 <outlet property="_imageController" destination="6gD-7O-ZxG" id="mTZ-vg-92o"/>
+                <outlet property="_midiController" destination="Bae-x0-FNf" id="2eV-nX-Mgb"/>
             </connections>
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="Ad4-ve-zxC"/>
         <window title="Image Data" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="imageDataHUD" animationBehavior="default" id="9Sd-Xd-DOc" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" nonactivatingPanel="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" rightStrut="YES"/>
-            <rect key="contentRect" x="940" y="125" width="660" height="510"/>
+            <rect key="contentRect" x="0.0" y="125" width="660" height="510"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1600" height="877"/>
             <value key="minSize" type="size" width="660" height="510"/>
             <value key="maxSize" type="size" width="660" height="510"/>
@@ -869,6 +902,35 @@
             <point key="canvasLocation" x="-108" y="376"/>
         </window>
         <customObject id="6gD-7O-ZxG" customClass="SQUTrackingImageController"/>
+        <customObject id="Bae-x0-FNf" customClass="SQUMIDIOutputController"/>
+        <window title="MIDI Info" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="midiInfo" animationBehavior="default" id="BeZ-Tq-Z5O" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" nonactivatingPanel="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="158" y="81" width="280" height="298"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="877"/>
+            <view key="contentView" id="X1d-bT-tu5">
+                <rect key="frame" x="0.0" y="0.0" width="280" height="298"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="twZ-Qp-yNg">
+                        <rect key="frame" x="20" y="262" width="240" height="16"/>
+                        <levelIndicatorCell key="cell" alignment="left" maxValue="100" warningValue="80" criticalValue="90" levelIndicatorStyle="continuousCapacity" id="NIp-uL-rAS"/>
+                    </levelIndicator>
+                    <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyB-so-6x4">
+                        <rect key="frame" x="20" y="246" width="240" height="16"/>
+                        <levelIndicatorCell key="cell" alignment="left" maxValue="100" warningValue="80" criticalValue="90" levelIndicatorStyle="continuousCapacity" id="nvm-bb-Y59"/>
+                    </levelIndicator>
+                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXj-S4-nRZ">
+                        <rect key="frame" x="18" y="213" width="244" height="27"/>
+                        <sliderCell key="cell" state="on" alignment="left" minValue="-40" maxValue="40" tickMarkPosition="below" numberOfTickMarks="10" sliderType="linear" id="zPo-kM-i96"/>
+                        <connections>
+                            <binding destination="Bae-x0-FNf" name="value" keyPath="limiterGain" id="RyB-lm-WXh"/>
+                        </connections>
+                    </slider>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="670.5" y="239"/>
+        </window>
     </objects>
     <resources>
         <image name="BubbleRed" width="21" height="21"/>

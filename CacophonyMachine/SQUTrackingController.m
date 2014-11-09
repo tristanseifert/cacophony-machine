@@ -8,17 +8,13 @@
 
 #include "MidiDefines.h"
 
+#import "SQUMIDIOutputController.h"
 #import "SQUTrackingImageController.h"
 #import "SQUTrackingController.h"
 
 @interface SQUTrackingController ()
 
 - (void) initAudioUnit;
-- (void) initMIDI;
-
-- (void) doPatchChangeOnChannel:(unsigned int) i forPatch:(UInt32) patch;
-- (void) doNoteOnOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum andVelocity:(UInt32) velocity;
-- (void) doNoteOffOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum;
 
 @end
 
@@ -45,8 +41,6 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 		
 		_leftPatch = 2;
 		_rightPatch = 9;
-		
-		[self initMIDI];
 	}
 	
 	return self;
@@ -150,11 +144,11 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 	frequency[0] = [_leftHandData[@"y"] floatValue] * _leftSensitivity;
 	frequency[1] = [_rightHandData[@"y"] floatValue] * _rightSensitivity;
 	
-	for(unsigned int i = 0; i < 2; i++) {
+/*	for(unsigned int i = 0; i < 2; i++) {
 		if(frequency[i] <= 10.f) {
 			theta[i] = 0.f;
 		}
-	}
+	}*/
 	
 	// calculate amplitude (abs(sqrt(x)))
 	amplitude[0] = MIN((sqrtf(0.1 * fabs([_leftHandData[@"x"] floatValue])) * .25), 1.0);
@@ -174,8 +168,8 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 			velocity = MIN(velocity, 0x7F);
 			
 			// Is it different from the last note?
-			if(noteNum != lastNote[i] && noteStates[i] == 1) {
-				[self doNoteOffOnChannel:i forNoteValue:lastNote[i]];
+			if(noteNum != _midiController->_lastNote[i] && _midiController->_noteStates[i] == 1) {
+				[_midiController doNoteOffOnChannel:i forNoteValue:_midiController->_lastNote[i]];
 			}
 			
 			// Note on events are triggered by non-negative yaw values
@@ -183,124 +177,18 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 			doNoteOn = ((i == 0 ? [_leftHandData[@"yaw"] floatValue] : [_rightHandData[@"yaw"] floatValue]) > 0);
 			
 			// process note on event, if needed
-			if(noteStates[i] == 0 && doNoteOn) {
+			if(_midiController->_noteStates[i] == 0 && doNoteOn) {
 				UInt32 patch = (UInt32) ((i == 0) ? _leftPatch : _rightPatch);
-				[self doPatchChangeOnChannel:i forPatch:patch];
+				[_midiController doPatchChangeOnChannel:i forPatch:patch];
 				
-				[self doNoteOnOnChannel:i forNoteValue:noteNum andVelocity:velocity];
+				[_midiController doNoteOnOnChannel:i forNoteValue:noteNum andVelocity:velocity];
 			}
 		} else {
-			if(noteStates[i] == 1) {
-				[self doNoteOffOnChannel:i forNoteValue:lastNote[i]];
+			if(_midiController->_noteStates[i] == 1) {
+				[_midiController doNoteOffOnChannel:i forNoteValue:_midiController->_lastNote[i]];
 			}
 		}
 	}
-}
-
-/**
- * Updates the patch for a given channel.
- */
-- (void) doPatchChangeOnChannel:(unsigned int) i forPatch:(UInt32) patch {
-	// patch change
-	OSStatus result = MusicDeviceMIDIEvent(_outSynth, (kMidiMessage_ProgramChange << 4) | i, patch, 0, 0);
-	DDAssert(result == 0, @"MusicDeviceMIDIEvent: patch change");
-}
-
-/**
- * Sends a note on event to a channel, with the given note on number. Does not
- * check for validity.
- */
-- (void) doNoteOnOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum andVelocity:(UInt32) velocity {
-	// send note on event
-	lastNote[i] = noteNum;
-	
-	OSStatus result = MusicDeviceMIDIEvent(_outSynth, (kMidiMessage_NoteOn << 4 | i), noteNum, velocity, 0);
-	DDAssert(result == 0, @"MusicDeviceMIDIEvent: Note On");
-	
-	noteStates[i] = 1;
-	
-#if LOG_NOTE_EVENTS
-	DDLogVerbose(@"Note on (ch %u): note %u, velocity %u", i, noteNum, velocity);
-#endif
-}
-
-/**
- * Performs a note off event for a given note on teh specified channel.
- */
-- (void) doNoteOffOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum {
-	noteStates[i] = 0;
-	
-	OSStatus result = MusicDeviceMIDIEvent(_outSynth, (kMidiMessage_NoteOff << 4 | i), noteNum, 0, 0);
-	DDAssert(result == 0, @"MusicDeviceMIDIEvent: Note Off");
-	
-#if LOG_NOTE_EVENTS
-	DDLogVerbose(@"Note off (ch %u): note %u", i, noteNum);
-#endif
-}
-
-#pragma mark - MIDI
-- (void) initMIDI {
-	OSStatus result;
-	AudioComponentDescription cd;
-	
-	result = NewAUGraph(&_outGraph);
-	DDAssert(result == 0, @"NewAUGraph");
-	
-	cd.componentManufacturer = kAudioUnitManufacturer_Apple;
-	cd.componentFlags = 0;
-	cd.componentFlagsMask = 0;
-	
-	cd.componentType = kAudioUnitType_MusicDevice;
-	cd.componentSubType = kAudioUnitSubType_DLSSynth;
-	result = AUGraphAddNode(_outGraph, &cd, &_synthNode);
-	DDAssert(result == 0, @"AUGraphAddNode");
-
-	cd.componentType = kAudioUnitType_Effect;
-	cd.componentSubType = kAudioUnitSubType_PeakLimiter;
-	
-	result = AUGraphAddNode(_outGraph, &cd, &_limiterNode);
-	DDAssert(result == 0, @"AUGraphAddNode");
-	
-	cd.componentType = kAudioUnitType_Output;
-	cd.componentSubType = kAudioUnitSubType_DefaultOutput;
-	result = AUGraphAddNode(_outGraph, &cd, &_outNode);
-	DDAssert(result == 0, @"AUGraphAddNode");
-	
-	result = AUGraphOpen(_outGraph);
-	DDAssert(result == 0, @"AUGraphOpen");
-	
-	result = AUGraphConnectNodeInput(_outGraph, _synthNode, 0, _limiterNode, 0);
-	DDAssert(result == 0, @"AUGraphConnectNodeInput");
-	result = AUGraphConnectNodeInput(_outGraph, _limiterNode, 0, _outNode, 0);
-	DDAssert(result == 0, @"AUGraphConnectNodeInput");
-	
-	// get synth unit
-	result = AUGraphNodeInfo(_outGraph, _synthNode, 0, &_outSynth);
-	DDAssert(result == 0, @"AUGraphNodeInfo");
-	
-	result = AUGraphInitialize(_outGraph);
-	DDAssert(result == 0, @"AUGraphInitialize");
-	
-	for(unsigned int i = 0; i < 2; i++) {
-		result = MusicDeviceMIDIEvent(_outSynth,
-									  kMidiMessage_ControlChange << 4 | i,
-									  kMidiMessage_BankMSBControl, 0,
-									  0/*sample offset*/);
-		DDAssert(result == 0, @"MusicDeviceMIDIEvent");
-	}
-	
-	for(unsigned int i = 0; i < 2; i++) {
-		result = MusicDeviceMIDIEvent(_outSynth,
-									  kMidiMessage_ProgramChange << 4 | i,
-									  0/*prog change num*/, 0,
-									  0/*sample offset*/);
-		DDAssert(result == 0, @"MusicDeviceMIDIEvent");
-	}
-	
-	CAShow(_outGraph);
-	
-	result = AUGraphStart(_outGraph);
-	DDAssert(result == 0, @"AUGraphStart");
 }
 
 #pragma mark - AudioUnit
