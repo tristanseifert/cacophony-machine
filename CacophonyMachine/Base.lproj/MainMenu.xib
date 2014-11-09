@@ -906,22 +906,22 @@
         <window title="MIDI Info" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="midiInfo" animationBehavior="default" id="BeZ-Tq-Z5O" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" nonactivatingPanel="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="158" y="81" width="280" height="298"/>
+            <rect key="contentRect" x="158" y="81" width="280" height="83"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1600" height="877"/>
             <view key="contentView" id="X1d-bT-tu5">
-                <rect key="frame" x="0.0" y="0.0" width="280" height="298"/>
+                <rect key="frame" x="0.0" y="0.0" width="280" height="83"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="twZ-Qp-yNg">
-                        <rect key="frame" x="20" y="262" width="240" height="16"/>
-                        <levelIndicatorCell key="cell" alignment="left" maxValue="100" warningValue="80" criticalValue="90" levelIndicatorStyle="continuousCapacity" id="NIp-uL-rAS"/>
-                    </levelIndicator>
-                    <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyB-so-6x4">
-                        <rect key="frame" x="20" y="246" width="240" height="16"/>
-                        <levelIndicatorCell key="cell" alignment="left" maxValue="100" warningValue="80" criticalValue="90" levelIndicatorStyle="continuousCapacity" id="nvm-bb-Y59"/>
-                    </levelIndicator>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wv4-HX-ea9">
+                        <rect key="frame" x="20" y="46" width="37" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Gain:" id="53a-GD-hjc">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXj-S4-nRZ">
-                        <rect key="frame" x="18" y="213" width="244" height="27"/>
+                        <rect key="frame" x="18" y="13" width="244" height="27"/>
                         <sliderCell key="cell" state="on" alignment="left" minValue="-40" maxValue="40" tickMarkPosition="below" numberOfTickMarks="10" sliderType="linear" id="zPo-kM-i96"/>
                         <connections>
                             <binding destination="Bae-x0-FNf" name="value" keyPath="limiterGain" id="RyB-lm-WXh"/>
@@ -929,7 +929,7 @@
                     </slider>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="670.5" y="239"/>
+            <point key="canvasLocation" x="670" y="131.5"/>
         </window>
     </objects>
     <resources>

@@ -128,7 +128,7 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 			} else {
 				_leftHandData[@"pitch"] = @(direction.pitch * LEAP_RAD_TO_DEG);
 				_leftHandData[@"roll"] = @(normal.roll * LEAP_RAD_TO_DEG);
-				_leftHandData[@"yaw"] = @(direction.yaw * LEAP_RAD_TO_DEG);
+				_leftHandData[@"yaw"] = @(-(direction.yaw * LEAP_RAD_TO_DEG));
 				
 				_leftHandData[@"x"] = @(avgPos.x);
 				_leftHandData[@"y"] = @(avgPos.y);
