@@ -15,6 +15,7 @@
 // set to 1 to log note events to console
 #define LOG_NOTE_EVENTS	1
 
+@class SQUMidiDeviceController;
 @interface SQUMIDIOutputController : NSObject {	
 	// midi stuff
 	AUGraph _outGraph;
@@ -22,6 +23,8 @@
 	AudioUnit _outSynth;
 	
 	NSTimer *_statsTimer;
+	
+	SQUMidiDeviceController *_midiDevice;
 	
 @public
 	// audio states

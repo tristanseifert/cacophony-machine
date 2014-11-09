@@ -8,6 +8,7 @@
 
 #include "MidiDefines.h"
 
+#import "SQUMidiDeviceController.h"
 #import "SQUMIDIOutputController.h"
 
 @interface SQUMIDIOutputController ()
@@ -24,6 +25,9 @@
 		
 		// set up timer
 		_statsTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateStats) userInfo:nil repeats:YES];
+		
+		// midi device
+		_midiDevice = [[SQUMidiDeviceController alloc] init];
 	}
 
 	return self;
@@ -154,8 +158,7 @@
 									  kMidiMessage_BankMSBControl, 0,
 									  0);
 		DDAssert(result == 0, @"MusicDeviceMIDIEvent");
-	}
-	for(unsigned int i = 0; i < 2; i++) {
+		
 		result = MusicDeviceMIDIEvent(_outSynth,
 									  kMidiMessage_ProgramChange << 4 | i,
 									  0/*prog change num*/, 0, 0);
