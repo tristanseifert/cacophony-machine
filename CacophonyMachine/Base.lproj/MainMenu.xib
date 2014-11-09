@@ -872,7 +872,7 @@
             </connections>
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="Ad4-ve-zxC"/>
-        <window title="Image Data" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="imageDataHUD" animationBehavior="default" id="9Sd-Xd-DOc" customClass="NSPanel">
+        <window title="Image Data" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="imageDataHUD" animationBehavior="default" id="9Sd-Xd-DOc" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" nonactivatingPanel="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" rightStrut="YES"/>
             <rect key="contentRect" x="0.0" y="125" width="660" height="510"/>

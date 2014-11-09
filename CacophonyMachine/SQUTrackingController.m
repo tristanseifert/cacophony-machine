@@ -167,14 +167,14 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 			UInt32 velocity = (UInt32) (127.f * amplitude[i]);
 			velocity = MIN(velocity, 0x7F);
 			
-			// Is it different from the last note?
-			if(noteNum != _midiController->_lastNote[i] && _midiController->_noteStates[i] == 1) {
-				[_midiController doNoteOffOnChannel:i forNoteValue:_midiController->_lastNote[i]];
-			}
-			
 			// Note on events are triggered by non-negative yaw values
 			BOOL doNoteOn = NO;
 			doNoteOn = ((i == 0 ? [_leftHandData[@"yaw"] floatValue] : [_rightHandData[@"yaw"] floatValue]) > 0);
+			
+			// Is it different from the last note?
+			if((noteNum != _midiController->_lastNote[i] || !doNoteOn) && _midiController->_noteStates[i] == 1) {
+				[_midiController doNoteOffOnChannel:i forNoteValue:_midiController->_lastNote[i]];
+			}
 			
 			// process note on event, if needed
 			if(_midiController->_noteStates[i] == 0 && doNoteOn) {

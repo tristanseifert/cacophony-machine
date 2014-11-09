@@ -154,7 +154,7 @@
 									  kMidiMessage_BankMSBControl, 0,
 									  0);
 		DDAssert(result == 0, @"MusicDeviceMIDIEvent");
-	}	
+	}
 	for(unsigned int i = 0; i < 2; i++) {
 		result = MusicDeviceMIDIEvent(_outSynth,
 									  kMidiMessage_ProgramChange << 4 | i,
