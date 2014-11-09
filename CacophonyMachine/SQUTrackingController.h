@@ -18,7 +18,7 @@
 #define LOG_NOTE_EVENTS	1
 
 // delay between detecting note on and the timer firing
-#define	NOTE_DELAY		1.0f
+#define	NOTE_DELAY		0.5f
 
 @class SQUTrackingImageController;
 @interface SQUTrackingController : NSObject <LeapListener> {
@@ -30,12 +30,6 @@
 	AUGraph _outGraph;
 	AUNode _synthNode, _limiterNode, _outNode;
 	AudioUnit _outSynth;
-	
-	// hysterysis timer
-	NSTimer *_newNoteTimer[2];
-/*	struct {
-		UInt32 note, channel;
-	} newNoteTimerData[2];*/
 	
 	NSUInteger noteStates[2];
 	UInt32 lastNote[2];

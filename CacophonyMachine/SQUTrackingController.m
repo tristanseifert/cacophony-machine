@@ -16,10 +16,8 @@
 - (void) initAudioUnit;
 - (void) initMIDI;
 
-- (void) delayedNoteOn:(NSTimer *) timer;
-
 - (void) doPatchChangeOnChannel:(unsigned int) i forPatch:(UInt32) patch;
-- (void) doNoteOnOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum;
+- (void) doNoteOnOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum andVelocity:(UInt32) velocity;
 - (void) doNoteOffOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum;
 
 @end
@@ -159,13 +157,8 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 	}
 	
 	// calculate amplitude (abs(sqrt(x)))
-	amplitude[0] = sqrtf(0.1 * fabs([_leftHandData[@"x"] floatValue])) * .25;
-	amplitude[1] = sqrtf(0.1 * fabs([_rightHandData[@"x"] floatValue])) * .25;
-	
-	// normalise amplitude
-	for (unsigned int i = 0; i < 2; i++) {
-		amplitude[i] = fmaxf(amplitude[i], 1.0);
-	}
+	amplitude[0] = MIN((sqrtf(0.1 * fabs([_leftHandData[@"x"] floatValue])) * .25), 1.0);
+	amplitude[1] = MIN((sqrtf(0.1 * [_rightHandData[@"x"] floatValue]) * .25), 1.0);
 	
 	// Interpret left and right channels
 	for(unsigned int i = 0; i < 2; i++) {
@@ -176,34 +169,25 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 			noteNum += (i == 0) ? _leftOffset : _rightOffset;
 			noteNum = MIN(noteNum, 0x7F);
 			
-			BOOL wasDifferentNote = NO;
+			// calculate the velocity number
+			UInt32 velocity = (UInt32) (127.f * amplitude[i]);
+			velocity = MIN(velocity, 0x7F);
 			
 			// Is it different from the last note?
 			if(noteNum != lastNote[i] && noteStates[i] == 1) {
 				[self doNoteOffOnChannel:i forNoteValue:lastNote[i]];
-				wasDifferentNote = YES;
 			}
 			
+			// Note on events are triggered by non-negative yaw values
+			BOOL doNoteOn = NO;
+			doNoteOn = ((i == 0 ? [_leftHandData[@"yaw"] floatValue] : [_rightHandData[@"yaw"] floatValue]) > 0);
+			
 			// process note on event, if needed
-			if(noteStates[i] == 0) {
+			if(noteStates[i] == 0 && doNoteOn) {
 				UInt32 patch = (UInt32) ((i == 0) ? _leftPatch : _rightPatch);
 				[self doPatchChangeOnChannel:i forPatch:patch];
 				
-				if(!wasDifferentNote) {
-					[self doNoteOnOnChannel:i forNoteValue:noteNum];
-				} else {
-					if(_newNoteTimer[i]) {
-						[_newNoteTimer[i] invalidate];
-						_newNoteTimer[i] = nil;
-					}
-					
-					// timer hysteresis
-					NSDictionary *dict = @{@"channel":@(i), @"note":@(noteNum)};
-					_newNoteTimer[i] = [NSTimer scheduledTimerWithTimeInterval:NOTE_DELAY target:self selector:@selector(delayedNoteOn:) userInfo:dict repeats:NO];
-					
-					// update state
-					lastNote[i] = noteNum;
-				}
+				[self doNoteOnOnChannel:i forNoteValue:noteNum andVelocity:velocity];
 			}
 		} else {
 			if(noteStates[i] == 1) {
@@ -211,19 +195,6 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
 			}
 		}
 	}
-}
-
-/**
- * Perform a note on event, with the information given in the dictionary.
- */
-- (void) delayedNoteOn:(NSTimer *) timer {
-	NSDictionary *info = timer.userInfo;
-	unsigned int channel = [info[@"channel"] unsignedIntValue];
-	
-	[self doNoteOnOnChannel:channel forNoteValue:[info[@"note"] unsignedIntValue]];
-	
-	[_newNoteTimer[channel] invalidate];
-	_newNoteTimer[channel] = nil;
 }
 
 /**
@@ -239,18 +210,17 @@ static OSStatus RenderTone(void *inRefCon, AudioUnitRenderActionFlags *ioActionF
  * Sends a note on event to a channel, with the given note on number. Does not
  * check for validity.
  */
-- (void) doNoteOnOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum {
+- (void) doNoteOnOnChannel:(unsigned int) i forNoteValue:(UInt32) noteNum andVelocity:(UInt32) velocity {
 	// send note on event
-	UInt32 onVelocity = 127;
 	lastNote[i] = noteNum;
 	
-	OSStatus result = MusicDeviceMIDIEvent(_outSynth, (kMidiMessage_NoteOn << 4 | i), noteNum, onVelocity, 0);
+	OSStatus result = MusicDeviceMIDIEvent(_outSynth, (kMidiMessage_NoteOn << 4 | i), noteNum, velocity, 0);
 	DDAssert(result == 0, @"MusicDeviceMIDIEvent: Note On");
 	
 	noteStates[i] = 1;
 	
 #if LOG_NOTE_EVENTS
-	DDLogVerbose(@"Note on (ch %u): note %u, velocity %u", i, noteNum, onVelocity);
+	DDLogVerbose(@"Note on (ch %u): note %u, velocity %u", i, noteNum, velocity);
 #endif
 }
 
