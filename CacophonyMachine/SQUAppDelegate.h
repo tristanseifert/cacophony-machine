@@ -8,11 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SQUPreferencesController;
 @interface SQUAppDelegate : NSObject <NSApplicationDelegate> {
 	IBOutlet NSPopUpButton *_patch1;
 	IBOutlet NSPopUpButton *_patch2;
+	
+	SQUPreferencesController *_prefsController;
 }
 
+- (IBAction) openPreferencesWindow:(id) sender;
 
 @end
 

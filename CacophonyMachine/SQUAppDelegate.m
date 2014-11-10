@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Tristan Seifert. All rights reserved.
 //
 
+#import "SQUPreferencesController.h"
+
 #import "SQUAppDelegate.h"
 
 static const char *instruments[] =
@@ -73,6 +75,14 @@ static const char *instruments[] =
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
 	// Insert code here to tear down your application
+}
+
+- (IBAction) openPreferencesWindow:(id) sender {
+	if(!_prefsController) {
+		_prefsController = [[SQUPreferencesController alloc] init];
+	}
+	
+	[_prefsController showWindow:sender];
 }
 
 @end
