@@ -13,4 +13,6 @@
 @property (nonatomic, readonly) NSArray *sampleBanks;
 @property (nonatomic, readonly) NSArray *sampleBankDisplayName;
 
+@property (nonatomic, readonly) NSArray *midiDevices;
+
 @end

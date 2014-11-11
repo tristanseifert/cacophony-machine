@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Tristan Seifert. All rights reserved.
 //
 
-#import "SQUPreferencesController.h"
+#import <TSAppKit/TSAppKit.h>
 
 #import "SQUAppDelegate.h"
 
@@ -79,7 +79,7 @@ static const char *instruments[] =
 
 - (IBAction) openPreferencesWindow:(id) sender {
 	if(!_prefsController) {
-		_prefsController = [[SQUPreferencesController alloc] init];
+		_prefsController = [[TSPreferencesController alloc] init];
 	}
 	
 	[_prefsController showWindow:sender];

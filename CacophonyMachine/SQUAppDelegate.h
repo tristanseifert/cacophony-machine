@@ -8,12 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SQUPreferencesController;
+@class TSPreferencesController;
 @interface SQUAppDelegate : NSObject <NSApplicationDelegate> {
 	IBOutlet NSPopUpButton *_patch1;
 	IBOutlet NSPopUpButton *_patch2;
 	
-	SQUPreferencesController *_prefsController;
+	TSPreferencesController *_prefsController;
 }
 
 - (IBAction) openPreferencesWindow:(id) sender;

@@ -6,11 +6,15 @@
 //  Copyright (c) 2014 Tristan Seifert. All rights reserved.
 //
 
+#import <CoreMIDI/CoreMIDI.h>
+
 #import "SQUPreferencePaneMIDI.h"
 
 @interface SQUPreferencePaneMIDI ()
 
 -  (NSArray *) pathsInLibraries:(NSString *) inSubPath;
+
+- (void) enumerateMIDIDestinations;
 
 @end
 
@@ -44,7 +48,7 @@
 			}
 		}
 		
-		DDLogVerbose(@"Found banks: %@", files);
+		//DDLogVerbose(@"Found banks: %@", files);
 		_sampleBanks = files;
 		
 		// get the display names
@@ -52,6 +56,9 @@
 		for (NSString *path in files) {
 			[((NSMutableArray *) _sampleBankDisplayName) addObject:[path lastPathComponent]];
 		}
+		
+		// enumerate for MIDI devices
+		[self enumerateMIDIDestinations];
 	}
 	
 	return self;
@@ -89,6 +96,54 @@
 	[arr addObject:result];
 	
 	return arr;
+}
+
+#pragma mark - Hardware MIDI
+/**
+ * Detects the different MIDI destinations in the system.
+ */
+- (void) enumerateMIDIDestinations {
+	ItemCount numDevices = MIDIGetNumberOfDestinations();
+	DDLogVerbose(@"Found %lu MIDI destinations", numDevices);
+	
+	NSMutableArray *arr = [NSMutableArray new];
+	
+	// go through all destinations
+	for (unsigned int i = 0; i < numDevices; i++) {
+		NSMutableDictionary *info = [NSMutableDictionary new];
+		
+		// get destination reference
+		MIDIEndpointRef dest = MIDIGetDestination(i);
+		DDAssert(dest, @"Couldn't get MIDI endpoint %u", i);
+		
+		// get name property
+		CFStringRef str;
+		MIDIObjectGetStringProperty(dest, kMIDIPropertyDisplayName, &str);
+		info[@"name"] = (NSString *) CFBridgingRelease(str);
+		
+		// get number of ports
+		SInt32 channels;
+		MIDIObjectGetIntegerProperty(dest, kMIDIPropertyTransmitChannels, &channels);
+		info[@"channels"] = @(channels);
+		
+		// get icon
+		CFStringRef iconPath;
+		MIDIObjectGetStringProperty(dest, kMIDIPropertyImage, &iconPath);
+		NSString *path = CFBridgingRelease(iconPath);
+
+		if(path) {
+			NSImage *img = [[NSImage alloc] initWithContentsOfFile:path];
+			if(img) {
+				info[@"icon"] = img;
+			}
+		}
+		
+		// add to array
+		[arr addObject:info];
+	}
+
+	_midiDevices = arr;
+	DDLogVerbose(@"MIDI destinations: %@", _midiDevices);
 }
 
 @end
