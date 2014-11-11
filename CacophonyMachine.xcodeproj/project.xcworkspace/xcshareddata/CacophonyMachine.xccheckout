@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>213CB84B-0DED-42C6-8D5D-7CED587B8B80</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CacophonyMachine</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8F5EB71204EAE4F4BC54D3136C7CBF6C58854991</key>
+		<string>github.com:tristanseifert/codeday.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CacophonyMachine/CacophonyMachine.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8F5EB71204EAE4F4BC54D3136C7CBF6C58854991</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:tristanseifert/codeday.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8F5EB71204EAE4F4BC54D3136C7CBF6C58854991</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8F5EB71204EAE4F4BC54D3136C7CBF6C58854991</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CodeDay2014</string>
+		</dict>
+	</array>
+</dict>
+</plist>

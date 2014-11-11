@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A1333491A0F1C6000D5106A /* SQUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1333481A0F1C6000D5106A /* SQUAppDelegate.m */; };
+		6A13334B1A0F1C6000D5106A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A13334A1A0F1C6000D5106A /* main.m */; };
+		6A13334D1A0F1C6000D5106A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A13334C1A0F1C6000D5106A /* Images.xcassets */; };
+		6A1333501A0F1C6000D5106A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A13334E1A0F1C6000D5106A /* MainMenu.xib */; };
+		6A13336C1A0F1E0D00D5106A /* LeapObjectiveC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6A13336B1A0F1E0D00D5106A /* LeapObjectiveC.mm */; };
+		6A13336E1A0F1E1C00D5106A /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A13336D1A0F1E1C00D5106A /* libLeap.dylib */; };
+		6A1333701A0F1E2F00D5106A /* libLeap.dylib in Copy Libraries */ = {isa = PBXBuildFile; fileRef = 6A13336D1A0F1E1C00D5106A /* libLeap.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		6A1333741A0F1E6600D5106A /* SQUTrackingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1333731A0F1E6600D5106A /* SQUTrackingController.m */; };
+		6A1333761A0F2AB100D5106A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1333751A0F2AB100D5106A /* AudioUnit.framework */; };
+		6A1333781A0F2AB500D5106A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1333771A0F2AB500D5106A /* CoreAudio.framework */; };
+		6A13337B1A0F388000D5106A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A13337A1A0F388000D5106A /* AudioToolbox.framework */; };
+		6A13337E1A0F454C00D5106A /* SQUTrackingImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A13337D1A0F454C00D5106A /* SQUTrackingImageController.m */; };
+		6A1333821A0F5F2D00D5106A /* SQUMIDIOutputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1333811A0F5F2D00D5106A /* SQUMIDIOutputController.m */; };
+		6A4761FE1A0F8C7100FC9163 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4761FD1A0F8C7100FC9163 /* CoreMIDI.framework */; };
+		6A4762011A0F8CB900FC9163 /* SQUMidiDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4762001A0F8CB900FC9163 /* SQUMidiDeviceController.m */; };
+		6A4762041A0FD09100FC9163 /* HelpFile.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6A4762031A0FD09100FC9163 /* HelpFile.rtf */; };
+		6AAE69C31A1003A4007444F7 /* TSPreferencesPanels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE69C21A1003A4007444F7 /* TSPreferencesPanels.plist */; };
+		6AAE69C81A1003DA007444F7 /* SQUPreferencePaneGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE69C61A1003DA007444F7 /* SQUPreferencePaneGeneral.m */; };
+		6AAE69C91A1003DA007444F7 /* SQUPreferencePaneGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE69C71A1003DA007444F7 /* SQUPreferencePaneGeneral.xib */; };
+		6AAE69CE1A1003F8007444F7 /* SQUPreferencePaneMIDI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE69CC1A1003F8007444F7 /* SQUPreferencePaneMIDI.m */; };
+		6AAE69CF1A1003F8007444F7 /* SQUPreferencePaneMIDI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE69CD1A1003F8007444F7 /* SQUPreferencePaneMIDI.xib */; };
+		6ABE16411A11AF8000165B3A /* TSAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABE163E1A11AF7200165B3A /* TSAppKit.framework */; };
+		6ABE16431A11AF8F00165B3A /* TSAppKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABE163E1A11AF7200165B3A /* TSAppKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DC04B94815340211665A48C8 /* libPods-CacophonyMachine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCC4402E15992A1104CC169 /* libPods-CacophonyMachine.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6ABE163D1A11AF7200165B3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6ABE16391A11AF7200165B3A /* TSAppKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6ABE16131A11A7AE00165B3A;
+			remoteInfo = TSAppKit;
+		};
+		6ABE163F1A11AF7B00165B3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6ABE16391A11AF7200165B3A /* TSAppKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6ABE16121A11A7AE00165B3A;
+			remoteInfo = TSAppKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6A13336F1A0F1E2300D5106A /* Copy Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				6A1333701A0F1E2F00D5106A /* libLeap.dylib in Copy Libraries */,
+			);
+			name = "Copy Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ABE16421A11AF8300165B3A /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6ABE16431A11AF8F00165B3A /* TSAppKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5C1279DEA13F19408D245AEC /* Pods-CacophonyMachine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CacophonyMachine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CacophonyMachine/Pods-CacophonyMachine.debug.xcconfig"; sourceTree = "<group>"; };
+		6395DBA13F728A91C06F341A /* Pods-CacophonyMachine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CacophonyMachine.release.xcconfig"; path = "Pods/Target Support Files/Pods-CacophonyMachine/Pods-CacophonyMachine.release.xcconfig"; sourceTree = "<group>"; };
+		6A1333421A0F1C6000D5106A /* CacophonyMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CacophonyMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1333461A0F1C6000D5106A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = CacophonyMachine/Info.plist; sourceTree = "<group>"; };
+		6A1333471A0F1C6000D5106A /* SQUAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQUAppDelegate.h; sourceTree = "<group>"; };
+		6A1333481A0F1C6000D5106A /* SQUAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQUAppDelegate.m; sourceTree = "<group>"; };
+		6A13334A1A0F1C6000D5106A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6A13334C1A0F1C6000D5106A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CacophonyMachine/Images.xcassets; sourceTree = "<group>"; };
+		6A13334F1A0F1C6000D5106A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6A1333651A0F1D2500D5106A /* CacophonyMachine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CacophonyMachine-Prefix.pch"; sourceTree = "<group>"; };
+		6A1333681A0F1E0D00D5106A /* Leap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leap.h; sourceTree = "<group>"; };
+		6A1333691A0F1E0D00D5106A /* LeapMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapMath.h; sourceTree = "<group>"; };
+		6A13336A1A0F1E0D00D5106A /* LeapObjectiveC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapObjectiveC.h; sourceTree = "<group>"; };
+		6A13336B1A0F1E0D00D5106A /* LeapObjectiveC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LeapObjectiveC.mm; sourceTree = "<group>"; };
+		6A13336D1A0F1E1C00D5106A /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libLeap.dylib; sourceTree = "<group>"; };
+		6A1333721A0F1E6600D5106A /* SQUTrackingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUTrackingController.h; sourceTree = "<group>"; };
+		6A1333731A0F1E6600D5106A /* SQUTrackingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUTrackingController.m; sourceTree = "<group>"; };
+		6A1333751A0F2AB100D5106A /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		6A1333771A0F2AB500D5106A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		6A1333791A0F341400D5106A /* MidiDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MidiDefines.h; sourceTree = "<group>"; };
+		6A13337A1A0F388000D5106A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6A13337C1A0F454C00D5106A /* SQUTrackingImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUTrackingImageController.h; sourceTree = "<group>"; };
+		6A13337D1A0F454C00D5106A /* SQUTrackingImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUTrackingImageController.m; sourceTree = "<group>"; };
+		6A1333801A0F5F2D00D5106A /* SQUMIDIOutputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMIDIOutputController.h; sourceTree = "<group>"; };
+		6A1333811A0F5F2D00D5106A /* SQUMIDIOutputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMIDIOutputController.m; sourceTree = "<group>"; };
+		6A4761FD1A0F8C7100FC9163 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		6A4761FF1A0F8CB900FC9163 /* SQUMidiDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMidiDeviceController.h; sourceTree = "<group>"; };
+		6A4762001A0F8CB900FC9163 /* SQUMidiDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMidiDeviceController.m; sourceTree = "<group>"; };
+		6A4762031A0FD09100FC9163 /* HelpFile.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = HelpFile.rtf; sourceTree = "<group>"; };
+		6AAE69C21A1003A4007444F7 /* TSPreferencesPanels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TSPreferencesPanels.plist; sourceTree = "<group>"; };
+		6AAE69C51A1003DA007444F7 /* SQUPreferencePaneGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUPreferencePaneGeneral.h; sourceTree = "<group>"; };
+		6AAE69C61A1003DA007444F7 /* SQUPreferencePaneGeneral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUPreferencePaneGeneral.m; sourceTree = "<group>"; };
+		6AAE69C71A1003DA007444F7 /* SQUPreferencePaneGeneral.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUPreferencePaneGeneral.xib; sourceTree = "<group>"; };
+		6AAE69CB1A1003F8007444F7 /* SQUPreferencePaneMIDI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUPreferencePaneMIDI.h; sourceTree = "<group>"; };
+		6AAE69CC1A1003F8007444F7 /* SQUPreferencePaneMIDI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUPreferencePaneMIDI.m; sourceTree = "<group>"; };
+		6AAE69CD1A1003F8007444F7 /* SQUPreferencePaneMIDI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUPreferencePaneMIDI.xib; sourceTree = "<group>"; };
+		6ABE16391A11AF7200165B3A /* TSAppKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TSAppKit.xcodeproj; path = TSAppKit/TSAppKit.xcodeproj; sourceTree = "<group>"; };
+		8CCC4402E15992A1104CC169 /* libPods-CacophonyMachine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CacophonyMachine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A13333F1A0F1C6000D5106A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ABE16411A11AF8000165B3A /* TSAppKit.framework in Frameworks */,
+				6A4761FE1A0F8C7100FC9163 /* CoreMIDI.framework in Frameworks */,
+				6A13337B1A0F388000D5106A /* AudioToolbox.framework in Frameworks */,
+				6A1333781A0F2AB500D5106A /* CoreAudio.framework in Frameworks */,
+				6A1333761A0F2AB100D5106A /* AudioUnit.framework in Frameworks */,
+				6A13336E1A0F1E1C00D5106A /* libLeap.dylib in Frameworks */,
+				DC04B94815340211665A48C8 /* libPods-CacophonyMachine.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22A74285B1809DF3896CF593 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A4761FD1A0F8C7100FC9163 /* CoreMIDI.framework */,
+				6A13337A1A0F388000D5106A /* AudioToolbox.framework */,
+				6A1333771A0F2AB500D5106A /* CoreAudio.framework */,
+				6A1333751A0F2AB100D5106A /* AudioUnit.framework */,
+				8CCC4402E15992A1104CC169 /* libPods-CacophonyMachine.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C1A2C76CB33ECCECD32B792 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C1279DEA13F19408D245AEC /* Pods-CacophonyMachine.debug.xcconfig */,
+				6395DBA13F728A91C06F341A /* Pods-CacophonyMachine.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6A1333391A0F1C6000D5106A = {
+			isa = PBXGroup;
+			children = (
+				6ABE16391A11AF7200165B3A /* TSAppKit.xcodeproj */,
+				6A1333671A0F1E0D00D5106A /* LeapSDK */,
+				6A13337F1A0F5F1700D5106A /* Audio */,
+				6A1333711A0F1E5700D5106A /* Tracking */,
+				6AAE69BC1A1001C1007444F7 /* Preferences */,
+				6A1333441A0F1C6000D5106A /* App Delegate */,
+				6A4762021A0FD07C00FC9163 /* Other Resources */,
+				6A1333431A0F1C6000D5106A /* Products */,
+				5C1A2C76CB33ECCECD32B792 /* Pods */,
+				22A74285B1809DF3896CF593 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6A1333431A0F1C6000D5106A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A1333421A0F1C6000D5106A /* CacophonyMachine.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A1333441A0F1C6000D5106A /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				6A1333471A0F1C6000D5106A /* SQUAppDelegate.h */,
+				6A1333481A0F1C6000D5106A /* SQUAppDelegate.m */,
+				6A13334E1A0F1C6000D5106A /* MainMenu.xib */,
+				6A1333451A0F1C6000D5106A /* Supporting Files */,
+			);
+			name = "App Delegate";
+			path = CacophonyMachine;
+			sourceTree = "<group>";
+		};
+		6A1333451A0F1C6000D5106A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A13334A1A0F1C6000D5106A /* main.m */,
+				6A1333651A0F1D2500D5106A /* CacophonyMachine-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A1333671A0F1E0D00D5106A /* LeapSDK */ = {
+			isa = PBXGroup;
+			children = (
+				6A13336D1A0F1E1C00D5106A /* libLeap.dylib */,
+				6A1333681A0F1E0D00D5106A /* Leap.h */,
+				6A1333691A0F1E0D00D5106A /* LeapMath.h */,
+				6A13336A1A0F1E0D00D5106A /* LeapObjectiveC.h */,
+				6A13336B1A0F1E0D00D5106A /* LeapObjectiveC.mm */,
+			);
+			path = LeapSDK;
+			sourceTree = "<group>";
+		};
+		6A1333711A0F1E5700D5106A /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				6A13337C1A0F454C00D5106A /* SQUTrackingImageController.h */,
+				6A13337D1A0F454C00D5106A /* SQUTrackingImageController.m */,
+				6A1333721A0F1E6600D5106A /* SQUTrackingController.h */,
+				6A1333731A0F1E6600D5106A /* SQUTrackingController.m */,
+			);
+			name = Tracking;
+			path = CacophonyMachine;
+			sourceTree = "<group>";
+		};
+		6A13337F1A0F5F1700D5106A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				6A1333791A0F341400D5106A /* MidiDefines.h */,
+				6A1333801A0F5F2D00D5106A /* SQUMIDIOutputController.h */,
+				6A1333811A0F5F2D00D5106A /* SQUMIDIOutputController.m */,
+				6A4761FF1A0F8CB900FC9163 /* SQUMidiDeviceController.h */,
+				6A4762001A0F8CB900FC9163 /* SQUMidiDeviceController.m */,
+			);
+			name = Audio;
+			path = CacophonyMachine;
+			sourceTree = "<group>";
+		};
+		6A4762021A0FD07C00FC9163 /* Other Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6A13334C1A0F1C6000D5106A /* Images.xcassets */,
+				6A1333461A0F1C6000D5106A /* Info.plist */,
+				6A4762031A0FD09100FC9163 /* HelpFile.rtf */,
+			);
+			name = "Other Resources";
+			sourceTree = "<group>";
+		};
+		6AAE69BC1A1001C1007444F7 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				6AAE69C21A1003A4007444F7 /* TSPreferencesPanels.plist */,
+				6AAE69C41A1003CA007444F7 /* Panels */,
+			);
+			name = Preferences;
+			path = CacophonyMachine;
+			sourceTree = "<group>";
+		};
+		6AAE69C41A1003CA007444F7 /* Panels */ = {
+			isa = PBXGroup;
+			children = (
+				6AAE69C51A1003DA007444F7 /* SQUPreferencePaneGeneral.h */,
+				6AAE69C61A1003DA007444F7 /* SQUPreferencePaneGeneral.m */,
+				6AAE69C71A1003DA007444F7 /* SQUPreferencePaneGeneral.xib */,
+				6AAE69CB1A1003F8007444F7 /* SQUPreferencePaneMIDI.h */,
+				6AAE69CC1A1003F8007444F7 /* SQUPreferencePaneMIDI.m */,
+				6AAE69CD1A1003F8007444F7 /* SQUPreferencePaneMIDI.xib */,
+			);
+			name = Panels;
+			sourceTree = "<group>";
+		};
+		6ABE163A1A11AF7200165B3A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6ABE163E1A11AF7200165B3A /* TSAppKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6A1333411A0F1C6000D5106A /* CacophonyMachine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A13335F1A0F1C6000D5106A /* Build configuration list for PBXNativeTarget "CacophonyMachine" */;
+			buildPhases = (
+				E4DA6A0259A4EB5DDBBC6ACA /* Check Pods Manifest.lock */,
+				6A13333E1A0F1C6000D5106A /* Sources */,
+				6A1333661A0F1D5C00D5106A /* Increment Bundle Version */,
+				6A13333F1A0F1C6000D5106A /* Frameworks */,
+				6A13336F1A0F1E2300D5106A /* Copy Libraries */,
+				6ABE16421A11AF8300165B3A /* Copy Frameworks */,
+				6A1333401A0F1C6000D5106A /* Resources */,
+				AE3B80A538D67F2A61C2935B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6ABE16401A11AF7B00165B3A /* PBXTargetDependency */,
+			);
+			name = CacophonyMachine;
+			productName = CacophonyMachine;
+			productReference = 6A1333421A0F1C6000D5106A /* CacophonyMachine.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6A13333A1A0F1C6000D5106A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Tristan Seifert";
+				TargetAttributes = {
+					6A1333411A0F1C6000D5106A = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 6A13333D1A0F1C6000D5106A /* Build configuration list for PBXProject "CacophonyMachine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6A1333391A0F1C6000D5106A;
+			productRefGroup = 6A1333431A0F1C6000D5106A /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6ABE163A1A11AF7200165B3A /* Products */;
+					ProjectRef = 6ABE16391A11AF7200165B3A /* TSAppKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				6A1333411A0F1C6000D5106A /* CacophonyMachine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6ABE163E1A11AF7200165B3A /* TSAppKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TSAppKit.framework;
+			remoteRef = 6ABE163D1A11AF7200165B3A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A1333401A0F1C6000D5106A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AAE69CF1A1003F8007444F7 /* SQUPreferencePaneMIDI.xib in Resources */,
+				6AAE69C91A1003DA007444F7 /* SQUPreferencePaneGeneral.xib in Resources */,
+				6A13334D1A0F1C6000D5106A /* Images.xcassets in Resources */,
+				6AAE69C31A1003A4007444F7 /* TSPreferencesPanels.plist in Resources */,
+				6A4762041A0FD09100FC9163 /* HelpFile.rtf in Resources */,
+				6A1333501A0F1C6000D5106A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6A1333661A0F1D5C00D5106A /* Increment Bundle Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Bundle Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+		AE3B80A538D67F2A61C2935B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CacophonyMachine/Pods-CacophonyMachine-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4DA6A0259A4EB5DDBBC6ACA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A13333E1A0F1C6000D5106A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A13336C1A0F1E0D00D5106A /* LeapObjectiveC.mm in Sources */,
+				6AAE69CE1A1003F8007444F7 /* SQUPreferencePaneMIDI.m in Sources */,
+				6A13334B1A0F1C6000D5106A /* main.m in Sources */,
+				6A13337E1A0F454C00D5106A /* SQUTrackingImageController.m in Sources */,
+				6AAE69C81A1003DA007444F7 /* SQUPreferencePaneGeneral.m in Sources */,
+				6A4762011A0F8CB900FC9163 /* SQUMidiDeviceController.m in Sources */,
+				6A1333821A0F5F2D00D5106A /* SQUMIDIOutputController.m in Sources */,
+				6A1333741A0F1E6600D5106A /* SQUTrackingController.m in Sources */,
+				6A1333491A0F1C6000D5106A /* SQUAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6ABE16401A11AF7B00165B3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TSAppKit;
+			targetProxy = 6ABE163F1A11AF7B00165B3A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6A13334E1A0F1C6000D5106A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A13334F1A0F1C6000D5106A /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6A13335D1A0F1C6000D5106A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6A13335E1A0F1C6000D5106A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6A1333601A0F1C6000D5106A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C1279DEA13F19408D245AEC /* Pods-CacophonyMachine.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "CacophonyMachine/CacophonyMachine-Prefix.pch";
+				INFOPLIST_FILE = CacophonyMachine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LeapSDK",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6A1333611A0F1C6000D5106A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6395DBA13F728A91C06F341A /* Pods-CacophonyMachine.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "CacophonyMachine/CacophonyMachine-Prefix.pch";
+				INFOPLIST_FILE = CacophonyMachine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LeapSDK",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6A13333D1A0F1C6000D5106A /* Build configuration list for PBXProject "CacophonyMachine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A13335D1A0F1C6000D5106A /* Debug */,
+				6A13335E1A0F1C6000D5106A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A13335F1A0F1C6000D5106A /* Build configuration list for PBXNativeTarget "CacophonyMachine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A1333601A0F1C6000D5106A /* Debug */,
+				6A1333611A0F1C6000D5106A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6A13333A1A0F1C6000D5106A /* Project object */;
+}
